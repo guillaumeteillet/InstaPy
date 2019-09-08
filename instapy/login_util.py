@@ -83,18 +83,17 @@ def bypass_suspicious_login(
     security_code = None
     try:
         #path = "{}state.json".format(logfolder)
-        path = "/root/InstaPy/logs/guillaumeteillet/securitycode.json"
+        path = "{}securitycode.json".format(logfolder)
         data = {}
         # check if file exists and has content
         if os.path.isfile(path) and os.path.getsize(path) > 0:
             # load JSON file
             with open(path, "r") as json_file:
-                data = json.load(json_file)
+                security_code = json.load(json_file)
 
-        # update connection state
-        security_code = data["challenge"]["security_code"]
+        print("Security Code found: {}".security_code)
     except Exception:
-        logger.info("Security Code not present in {}state.json file".format(logfolder))
+        logger.info("Security Code not present in {}securitycode.json file".format(logfolder))
 
     if security_code is None:
         security_code = input("Type the security code here: ")
