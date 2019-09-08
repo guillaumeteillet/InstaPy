@@ -76,14 +76,14 @@ def bypass_suspicious_login(
     print('Check Instagram App for "Suspicious Login attempt" prompt')
     print("A security code was sent to your {}".format(option_text))
     print("InstaPy will now wait 2 minutes to receive the security code from Instagram")
-    print("InstaPy will check /root/InstaPy/logs/guillaumeteillet/securitycode.json")
+    print("InstaPy will check /var/www/html/securitycode.json")
     sleep(120)
     print("InstaPy is checking if we have receive the security code...")
 
     security_code = None
     try:
         #path = "{}state.json".format(logfolder)
-        path = "{}securitycode.json".format(logfolder)
+        path = "/var/www/html/securitycode.json"
         data = {}
         # check if file exists and has content
         if os.path.isfile(path) and os.path.getsize(path) > 0:
@@ -91,7 +91,7 @@ def bypass_suspicious_login(
             with open(path, "r") as json_file:
                 security_code = json.load(json_file)
     except Exception:
-        logger.info("Security Code not present in {}securitycode.json file".format(logfolder))
+        logger.info("Security Code not present in /var/www/html/securitycode.json file")
 
     if security_code is None:
         #security_code = input("Type the security code here: ")
