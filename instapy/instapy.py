@@ -121,6 +121,7 @@ class InstaPy:
         split_db: bool = False,
         bypass_security_challenge_using: str = "email",
     ):
+        print("This is a modified version of InstaPy")
         print("InstaPy Version: {}".format(__version__))
         cli_args = parse_cli_args()
         username = cli_args.username or username
