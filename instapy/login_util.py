@@ -90,13 +90,14 @@ def bypass_suspicious_login(
             # load JSON file
             with open(path, "r") as json_file:
                 security_code = json.load(json_file)
-
-        print("Security Code found: {}".security_code)
     except Exception:
         logger.info("Security Code not present in {}securitycode.json file".format(logfolder))
 
     if security_code is None:
-        security_code = input("Type the security code here: ")
+        #security_code = input("Type the security code here: ")
+        print("Security Code not found. Send Telegram Message here")
+    else:
+        print("Security Code found: {}".security_code)
 
     security_code_field = browser.find_element_by_xpath(
         read_xpath(bypass_suspicious_login.__name__, "security_code_field")
