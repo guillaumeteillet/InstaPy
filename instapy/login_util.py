@@ -97,7 +97,7 @@ def bypass_suspicious_login(
         #security_code = input("Type the security code here: ")
         print("Security Code not found. Send Telegram Message here")
     else:
-        print("Security Code found: {}".security_code)
+        print("Security Code found: {}".format(security_code))
 
     security_code_field = browser.find_element_by_xpath(
         read_xpath(bypass_suspicious_login.__name__, "security_code_field")
