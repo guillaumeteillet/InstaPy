@@ -75,10 +75,15 @@ def bypass_suspicious_login(
     print("Instagram detected an unusual login attempt")
     print('Check Instagram App for "Suspicious Login attempt" prompt')
     print("A security code was sent to your {}".format(option_text))
+    print("InstaPy will now wait 2 minutes to receive the security code from Instagram")
+    print("InstaPy will check /root/InstaPy/logs/guillaumeteillet/securitycode.json")
+    sleep(120)
+    print("InstaPy is checking if we have receive the security code...")
 
     security_code = None
     try:
-        path = "{}state.json".format(logfolder)
+        #path = "{}state.json".format(logfolder)
+        path = "/root/InstaPy/logs/guillaumeteillet/securitycode.json"
         data = {}
         # check if file exists and has content
         if os.path.isfile(path) and os.path.getsize(path) > 0:
